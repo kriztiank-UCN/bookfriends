@@ -6,9 +6,10 @@ use function Pest\Laravel\post;
 
 uses(RefreshDatabase::class);
 
-// it('redirects authenticated user', function () {
-//     expect(User::factory()->create())->toBeRedirectedFor('/auth/register');
-// });
+// toBeRedirectedFor uses a custom Pest assertion
+it('redirects authenticated user', function () {
+    expect(User::factory()->create())->toBeRedirectedFor('/auth/register');
+});
 
 // high order test one-liner syntax
 it('shows the register page')->get('/auth/register')->assertStatus(200);
