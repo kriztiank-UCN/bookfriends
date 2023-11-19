@@ -6,6 +6,8 @@
       Bookfriends
     </x-slot> --}}
 
+    
+
     <h1 class="font-bold text-2xl text-slate-800">
       Bookfriends
     </h1>
