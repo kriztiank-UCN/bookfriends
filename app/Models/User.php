@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
 use App\Models\Book;
+use App\Models\Pivot\BookUser;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -48,8 +49,9 @@ class User extends Authenticatable
     public function books()
     {
         return $this->belongsToMany(Book::class)
+            // Now we have access to the BookUser model
+            ->using(BookUser::class)
             ->withPivot('status')
             ->withTimestamps();
     }
-
 }

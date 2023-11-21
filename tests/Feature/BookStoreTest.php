@@ -14,14 +14,11 @@ beforeEach(function () {
 
 it('only allows authenticated users to post')
   // ->expectGuest()->toBeRedirectedFor('/books', 'post');
-
   ->post('/books')
   ->assertStatus(302);
 
 it('creates a book', function () {
-
   // $user = User::factory()->create(); // moved to beforeEach
-
   $this->actingAs($this->user)
 
     ->post('/books', [
@@ -45,3 +42,10 @@ it('requires a book title, author and status')
   ->tap(fn () => $this->actingAs($this->user))
   ->post('/books')
   ->assertSessionHasErrors(['title', 'author', 'status']);
+
+  it('requires a valid status')
+    ->tap(fn () => $this->actingAs($this->user))
+    ->post('/books', [
+        'status' => 'EATING'
+    ])
+    ->assertSessionHasErrors(['status']);
