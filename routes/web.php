@@ -19,8 +19,8 @@ Route::get('/', HomeController::class);
 Route::get('/auth/register', RegisterIndexController::class);
 Route::get('/auth/login', LoginController::class);
 Route::post('/books', BookStoreController::class);
+Route::get('/books/create', BookCreateController::class);
 
-// Route::get('/books/create', BookCreateController::class);
 // Route::get('/books/{book}/edit', BookEditController::class);
 // Route::put('/books/{book}', BookPutController::class);
 
